@@ -29,20 +29,21 @@ function SignupForm() {
 		setFormState({ ...formState, [event.target.name]: event.target.value });
 
 	const handleSubmit = async () => {
-		console.log(formState);
+		// console.log(formState);
 		try {
-			const data = await axios.post("/signup", formState);
-			console.log(data);
+			
+			const data = await axios.post("http://localhost:5005/api/signup", formState, {withCredentials:true});
+			console.log(data.data, "COckney");
 			setFormState({});
 			navigate("/profile");
 		} catch (err) {
 			console.error(err, "<<<<<");
-			console.log(err.response);
+			// console.log(err.response);
 
-			setFormState({
-				...formState,
-				error: err.response.data.errorMessage || err.message,
-			});
+			// setFormState({
+			// 	...formState,
+			// 	error: err.response.data.errorMessage || err.message,
+			// });
 		}
 	};
 
