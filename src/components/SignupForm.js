@@ -43,9 +43,10 @@ function SignupForm() {
 		}
 	};
 
-	const onFormChange = (event) => setFormState(event.target.value);
+	const onFormChange = (event) =>
+		setFormState({ ...formState, [event.target.name]: event.target.value });
 
-	const handleSubmit = () => console.log(formState);
+	const handleSubmit = () => console.log(formState, "<<<<<,,");
 
 	return (
 		<div>
