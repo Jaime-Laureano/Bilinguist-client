@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
 	TextField,
 	FormControl,
@@ -10,33 +10,76 @@ import {
 	FormGroup,
 } from "@mui/material";
 
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
 function SignupForm() {
-	const [formState, setFormState] = useState({});
+	const [formState, setFormState] = useState({
+		fullName: "",
+		email: "",
+		password: "",
+		country: "",
+		city: "",
+	});
+	const navigate = useNavigate();
+
+	useEffect(() => {}, []);
+
+	const onFormChange = (event) =>
+		setFormState({ ...formState, [event.target.name]: event.target.value });
+
+	const handleSubmit = () => console.log(formState);
 
 	return (
 		<div>
 			<FormGroup>
-				<TextField id='filled-basic' label='full name' variant='filled' />
-				<TextField id='filled-basic' label='email' variant='filled' />
-				<TextField id='filled-basic' label='password' variant='filled' />
-				<TextField id='filled-basic' label='country' variant='filled' />
-				<TextField id='filled-basic' label='city' variant='filled' />
-				<FormControl sx={{ m: 1, minWidth: 120 }}>
-					<InputLabel id='demo-simple-select-label'>Who are you?</InputLabel>
-					<Select
-						labelId='demo-simple-select-label'
-						id='demo-simple-select'
-						value='Other'
-						label='Type'>
-						<MenuItem value={"Teacher"}>Teacher</MenuItem>
-						<MenuItem value={"Student"}>Student</MenuItem>
-					</Select>
-				</FormControl>
-				<Button
-					variant='contained'
-					onClick={() => {
-						alert("clicked");
-					}}>
+				<TextField
+					id='filled-basic'
+					label='full name'
+					variant='filled'
+					name='fullName'
+					onChange={onFormChange}
+					value={formState.fullName}
+					required
+				/>
+				<TextField
+					id='filled-basic'
+					label='email'
+					variant='filled'
+					name='email'
+					onChange={onFormChange}
+					value={formState.email}
+					type='email'
+					required
+				/>
+				<TextField
+					id='filled-basic'
+					label='password'
+					variant='filled'
+					name='password'
+					onChange={onFormChange}
+					value={formState.password}
+					type='password'
+					required
+				/>
+				<TextField
+					id='filled-basic'
+					label='country'
+					variant='filled'
+					name='country'
+					onChange={onFormChange}
+					value={formState.country}
+				/>
+				<TextField
+					id='filled-basic'
+					label='city'
+					variant='filled'
+					name='city'
+					onChange={onFormChange}
+					value={formState.city}
+				/>
+
+				<Button type='submit' variant='contained' onClick={handleSubmit}>
 					Submit
 				</Button>
 			</FormGroup>
