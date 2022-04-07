@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
 	TextField,
 	FormControl,
@@ -11,6 +11,8 @@ import {
 } from "@mui/material";
 
 function SignupForm() {
+	const [formState, setFormState] = useState({});
+
 	return (
 		<div>
 			<FormGroup>
