@@ -28,7 +28,23 @@ function SignupForm() {
 	const onFormChange = (event) =>
 		setFormState({ ...formState, [event.target.name]: event.target.value });
 
-	const handleSubmit = () => console.log(formState);
+	const handleSubmit = async () => {
+		console.log(formState);
+		try {
+			const data = await axios.post("/signup", formState);
+			console.log(data);
+			setFormState({});
+			navigate("/profile");
+		} catch (err) {
+			console.error(err);
+			console.log(err.response);
+
+			setFormState({
+				...formState,
+				error: err.response.data.errorMessage || err.message,
+			});
+		}
+	};
 
 	return (
 		<div>
