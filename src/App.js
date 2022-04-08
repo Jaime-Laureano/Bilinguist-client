@@ -11,6 +11,7 @@ import VideoChat from "./pages/VideoChat";
 import MessageBoard from "./pages/MessageBoard";
 import EditComment from "./pages/EditComment";
 import FindTeacher from "./pages/FindTeacher";
+import LogoutPage from "./pages/LogoutPage";
 
 function App() {
 	return (
@@ -27,6 +28,7 @@ function App() {
 				<Route path='/message-board' element={<MessageBoard />} />
 				<Route path='/message-board/:comment_id' element={<EditComment />} />
 				<Route path='/find-teacher' element={<FindTeacher />} />
+				<Route path='/logout' element={<LogoutPage />} />
 			</Routes>
 		</div>
 	);
