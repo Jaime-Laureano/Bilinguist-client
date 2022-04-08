@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FormGroup, Button } from "@mui/material";
 import axios from "axios";
 
@@ -7,7 +7,7 @@ function LogoutPage() {
 		email: "",
 		password: "",
 	});
-
+	useEffect(() => {}, []);
 	const handleSubmit = async () => {
 		try {
 			const data = await axios.post(
@@ -32,7 +32,7 @@ function LogoutPage() {
 			<h1>Sure you wanna log out?</h1>
 			<FormGroup>
 				<Button type='submit' variant='contained' onClick={handleSubmit}>
-					Submit
+					Logout
 				</Button>
 			</FormGroup>
 		</div>
