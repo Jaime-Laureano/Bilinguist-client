@@ -10,6 +10,7 @@ import HomePage from "./pages/HomePage";
 import VideoChat from "./pages/VideoChat";
 import MessageBoard from "./pages/MessageBoard";
 import EditComment from "./pages/EditComment";
+import FindTeacher from "./pages/FindTeacher";
 
 function App() {
 	return (
@@ -25,6 +26,7 @@ function App() {
 				<Route path='/video-chat' element={<VideoChat />} />
 				<Route path='/message-board' element={<MessageBoard />} />
 				<Route path='/message-board/:comment_id' element={<EditComment />} />
+				<Route path='/find-teacher' element={<FindTeacher />} />
 			</Routes>
 		</div>
 	);
