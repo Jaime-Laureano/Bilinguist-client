@@ -56,6 +56,7 @@ function LoginForm() {
 					label='password'
 					variant='filled'
 					name='password'
+					type='password'
 					onChange={onFormChange}
 					value={loginFormState.password}
 					required
