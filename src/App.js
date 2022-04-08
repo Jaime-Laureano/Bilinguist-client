@@ -7,6 +7,7 @@ import StudentProfilePage from "./pages/StudentProfilePage";
 import TeacherProfilePage from "./pages/TeacherProfilePage";
 import Practice from "./pages/Practice";
 import HomePage from "./pages/HomePage";
+import VideoChat from "./pages/VideoChat";
 
 function App() {
 	return (
@@ -19,6 +20,7 @@ function App() {
 				<Route path='/student-profile' element={<StudentProfilePage />} />
 				<Route path='/teacher-profile' element={<TeacherProfilePage />} />
 				<Route path='/practice-page' element={<Practice />} />
+				<Route path='/video-chat' element={<VideoChat />} />
 			</Routes>
 		</div>
 	);
