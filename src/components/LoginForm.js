@@ -18,16 +18,20 @@ function LoginForm() {
 		});
 
 	const handleSubmit = async () => {
-		console.log(loginFormState, "*********");
 		try {
 			const data = await axios.post(
 				"http://localhost:5005/api/login",
 				loginFormState,
 				{ withCredentials: true },
 			);
-			console.log(data.data, "Brummie login data");
+			console.log(data.data.isTeacher, "Brummie login data");
 			setLoginFormState({});
-			navigate("/profile");
+
+			if (data.data.isTeacher === true) {
+				navigate("/teacher-profile");
+			} else {
+				navigate("/student-profile");
+			}
 		} catch (err) {
 			console.error(err, "<<<<<");
 			// console.log(err.response);
