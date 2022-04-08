@@ -22,7 +22,7 @@ function App() {
 				<Route path='/login' element={<LoginForm />} />
 				<Route path='/student-profile' element={<StudentProfilePage />} />
 				<Route path='/teacher-profile' element={<TeacherProfilePage />} />
-				<Route path='/practice-page' element={<Practice />} />
+				<Route path='/practice' element={<Practice />} />
 				<Route path='/video-chat' element={<VideoChat />} />
 				<Route path='/message-board' element={<MessageBoard />} />
 				<Route path='/message-board/:comment_id' element={<EditComment />} />

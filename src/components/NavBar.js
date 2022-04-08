@@ -4,9 +4,12 @@ import { Link } from "react-router-dom";
 function NavBar() {
 	return (
 		<div>
-			<Link to='/signup'>signup here</Link>
-			<Link to='/login'>login</Link>
-			<Link to='/profile'>🏠</Link>
+			<Link to='/practice'>practice here</Link>
+			<Link to='/message-board'>chat here</Link>
+			<Link to='/student-profile'>🏠</Link>
+			<Link to='/find-teacher'>Find a teacher</Link>
+			<Link to='/video-chat'>call here</Link>
+			<Link to='/logout'>Logout</Link>
 		</div>
 	);
 }
