@@ -6,12 +6,14 @@ import LoginForm from "./components/LoginForm";
 import StudentProfilePage from "./pages/StudentProfilePage";
 import TeacherProfilePage from "./pages/TeacherProfilePage";
 import Practice from "./pages/Practice";
+import HomePage from "./pages/HomePage";
 
 function App() {
 	return (
 		<div className='App'>
 			<NavBar />
 			<Routes>
+				<Route path='/' element={<HomePage />} />
 				<Route path='/signup' element={<SignupForm />} />
 				<Route path='/login' element={<LoginForm />} />
 				<Route path='/student-profile' element={<StudentProfilePage />} />
