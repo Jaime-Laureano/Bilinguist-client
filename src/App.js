@@ -8,6 +8,8 @@ import TeacherProfilePage from "./pages/TeacherProfilePage";
 import Practice from "./pages/Practice";
 import HomePage from "./pages/HomePage";
 import VideoChat from "./pages/VideoChat";
+import MessageBoard from "./pages/MessageBoard";
+import EditComment from "./pages/EditComment";
 
 function App() {
 	return (
@@ -21,6 +23,8 @@ function App() {
 				<Route path='/teacher-profile' element={<TeacherProfilePage />} />
 				<Route path='/practice-page' element={<Practice />} />
 				<Route path='/video-chat' element={<VideoChat />} />
+				<Route path='/message-board' element={<MessageBoard />} />
+				<Route path='/message-board/:comment_id' element={<EditComment />} />
 			</Routes>
 		</div>
 	);
