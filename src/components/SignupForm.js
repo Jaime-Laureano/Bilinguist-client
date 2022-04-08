@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import {
 	TextField,
+	FormLabel,
+	FormControlLabel,
+	Radio,
+	RadioGroup,
 	FormControl,
 	Select,
 	MenuItem,
@@ -20,6 +24,7 @@ function SignupForm() {
 		password: "",
 		country: "",
 		city: "",
+		isTeacher: true,
 	});
 	const navigate = useNavigate();
 
@@ -29,10 +34,13 @@ function SignupForm() {
 		setFormState({ ...formState, [event.target.name]: event.target.value });
 
 	const handleSubmit = async () => {
-		// console.log(formState);
+		console.log(formState);
 		try {
-			
-			const data = await axios.post("http://localhost:5005/api/signup", formState, {withCredentials:true});
+			const data = await axios.post(
+				"http://localhost:5005/api/signup",
+				formState,
+				{ withCredentials: true },
+			);
 			console.log(data.data, "COckney");
 			setFormState({});
 			navigate("/profile");
@@ -59,6 +67,7 @@ function SignupForm() {
 					value={formState.fullName}
 					required
 				/>
+
 				<TextField
 					id='filled-basic'
 					label='email'
@@ -95,6 +104,17 @@ function SignupForm() {
 					onChange={onFormChange}
 					value={formState.city}
 				/>
+				<FormLabel id='demo-controlled-radio-buttons-group'>
+					Who are you?
+				</FormLabel>
+				<RadioGroup
+					aria-labelledby='demo-controlled-radio-buttons-group'
+					name='isTeacher'
+					value={formState.isTeacher}
+					onChange={onFormChange}>
+					<FormControlLabel value={false} control={<Radio />} label='Student' />
+					<FormControlLabel value={true} control={<Radio />} label='Teacher' />
+				</RadioGroup>
 
 				<Button type='submit' variant='contained' onClick={handleSubmit}>
 					Submit
