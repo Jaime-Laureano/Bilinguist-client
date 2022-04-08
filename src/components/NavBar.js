@@ -6,7 +6,7 @@ function NavBar() {
 		<div>
 			<Link to='/signup'>signup here</Link>
 			<Link to='/login'>login</Link>
-			<Link to='/profile'>profile</Link>
+			<Link to='/profile'>🏠 profile</Link>
 		</div>
 	);
 }
