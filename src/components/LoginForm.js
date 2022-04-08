@@ -18,7 +18,6 @@ function LoginForm() {
 		});
 
 	const handleSubmit = async () => {
-		console.log(loginFormState, "*********");
 		try {
 			const data = await axios.post(
 				"http://localhost:5005/api/login",
