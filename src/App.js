@@ -12,6 +12,7 @@ import MessageBoard from "./pages/MessageBoard";
 import EditComment from "./pages/EditComment";
 import FindTeacher from "./pages/FindTeacher";
 import LogoutPage from "./pages/LogoutPage";
+import AddTeacherForm from "./components/AddTeacherForm";
 
 function App() {
 	return (
@@ -28,6 +29,7 @@ function App() {
 				<Route path='/message-board' element={<MessageBoard />} />
 				<Route path='/message-board/:comment_id' element={<EditComment />} />
 				<Route path='/find-teacher' element={<FindTeacher />} />
+				<Route path='/find-teacher/add-teacher' element={<AddTeacherForm />} />
 				<Route path='/logout' element={<LogoutPage />} />
 			</Routes>
 		</div>
