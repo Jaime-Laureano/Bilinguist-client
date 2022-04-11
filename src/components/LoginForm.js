@@ -34,12 +34,6 @@ function LoginForm() {
 			}
 		} catch (err) {
 			console.error(err, "<<<<<");
-			// console.log(err.response);
-
-			// setFormState({
-			// 	...formState,
-			// 	error: err.response.data.errorMessage || err.message,
-			// });
 		}
 	};
 	return (
