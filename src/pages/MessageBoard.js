@@ -9,8 +9,26 @@ function MessageBoard() {
 		comment: "",
 		from: "randomName",
 	});
+	const [allCommentsState, setAllCommentsState] = useState();
 
-	useEffect(() => {}, []);
+	useEffect(() => {
+		allComments();
+	}, []);
+
+	const allComments = async () => {
+		try {
+			const { data } = await axios.get(
+				"http://localhost:5005/api/message-board",
+				{
+					withCredentials: true,
+				},
+			);
+			console.log(data.messages, "<<< allComments");
+			setAllCommentsState({ ...data });
+		} catch (err) {
+			console.log(err, "in message board client");
+		}
+	};
 
 	const onFormChange = (event) =>
 		setCommentFormState({
@@ -19,9 +37,9 @@ function MessageBoard() {
 		});
 
 	const handleSubmit = async () => {
-		console.log(commentFormState);
+		console.log(commentFormState, "from clienttttttt");
 		try {
-			const data = await axios.post(
+			const { data } = await axios.post(
 				"http://localhost:5005/api/message-board",
 				commentFormState,
 				{ withCredentials: true },
@@ -32,6 +50,9 @@ function MessageBoard() {
 			console.error(err, "<<<<<");
 		}
 	};
+
+	console.log(allCommentsState, "lllllllllllll whyyy is this happeninggggg");
+
 	return (
 		<div>
 			<h1>Message Board goes hereeeeeeeeee</h1>
@@ -42,7 +63,7 @@ function MessageBoard() {
 					id='filled-basic'
 					label='Add your comment'
 					variant='filled'
-					name='addComment'
+					name='comment'
 					onChange={onFormChange}
 					value={commentFormState.comment}
 					required
@@ -52,9 +73,9 @@ function MessageBoard() {
 				</Button>
 			</FormGroup>
 			<>
-				{fakeComments.map((comment, i) => {
+				{allCommentsState.messages.map((comment, i) => {
 					console.log("am i here", comment.from);
-					return <li key={comment.from + i}>{comment.comment}</li>;
+					return <p key={comment.from + i}>{comment.comment}</p>;
 				})}
 			</>
 			<Link to='/message-board/:comment_id'>Edit Comment here</Link>
