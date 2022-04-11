@@ -11,6 +11,7 @@ function AddTeacherForm() {
 		langLevel: "",
 		goals: "",
 		funFact: "",
+		price: "0",
 	});
 	const navigate = useNavigate();
 
@@ -28,7 +29,7 @@ function AddTeacherForm() {
 				addTeacherFormState,
 				{ withCredentials: true },
 			);
-			console.log(data.data, "COckney");
+			console.log(data.data, "Gordie");
 			setAddTeacherFormState({});
 			navigate("/find-teacher");
 		} catch (err) {
@@ -91,6 +92,15 @@ function AddTeacherForm() {
 					name='funFact'
 					onChange={onFormChange}
 					value={addTeacherFormState.funFact}
+					required
+				/>
+				<TextField
+					id='filled-basic'
+					label='Price per hour'
+					variant='filled'
+					name='price'
+					onChange={onFormChange}
+					value={addTeacherFormState.price}
 					required
 				/>
 				<Button type='submit' variant='contained' onClick={handleSubmit}>
