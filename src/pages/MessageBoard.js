@@ -36,10 +36,7 @@ function MessageBoard() {
 		<div>
 			<h1>Message Board goes hereeeeeeeeee</h1>
 			<h3>Add your message here. Say hi to our community</h3>
-			{fakeComments.map((comment) => {
-				console.log("am i here", comment);
-				<h3 key={comment.from}>{comment.from}</h3>;
-			})}
+
 			<FormGroup>
 				<TextField
 					id='filled-basic'
@@ -54,6 +51,12 @@ function MessageBoard() {
 					Submit
 				</Button>
 			</FormGroup>
+			<>
+				{fakeComments.map((comment, i) => {
+					console.log("am i here", comment.from);
+					return <li key={comment.from + i}>{comment.comment}</li>;
+				})}
+			</>
 			<Link to='/message-board/:comment_id'>Edit Comment here</Link>
 		</div>
 	);
