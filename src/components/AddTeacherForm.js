@@ -24,7 +24,7 @@ function AddTeacherForm() {
 		console.log(addTeacherFormState);
 		try {
 			const data = await axios.post(
-				"http://localhost:5005/api/find-teacher",
+				"http://localhost:5005/api/add-teacher",
 				addTeacherFormState,
 				{ withCredentials: true },
 			);
