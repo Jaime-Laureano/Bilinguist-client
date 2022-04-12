@@ -11,7 +11,8 @@ function AddTeacherForm() {
 		langLevel: "",
 		goals: "",
 		funFact: "",
-		price: "0",
+		price: 0,
+		city: "London",
 	});
 	const navigate = useNavigate();
 
