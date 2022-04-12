@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-function LoginForm() {
+function LoginForm({handleSetUser}) {
 	const [loginFormState, setLoginFormState] = useState({
 		email: "",
 		password: "",
@@ -24,6 +24,7 @@ function LoginForm() {
 				loginFormState,
 				{ withCredentials: true },
 			);
+			handleSetUser(data.data)
 			console.log(data.data.isTeacher, "Brummie login data");
 			setLoginFormState({});
 
