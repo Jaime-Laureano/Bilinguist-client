@@ -38,7 +38,7 @@ function SignupForm() {
 			);
 			console.log(data.data, "COckney");
 			setFormState({});
-			navigate("/profile");
+			navigate("/login");
 		} catch (err) {
 			console.error(err, "<<<<<");
 		}

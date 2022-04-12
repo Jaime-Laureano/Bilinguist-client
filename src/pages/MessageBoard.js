@@ -75,13 +75,13 @@ function MessageBoard() {
 					{allCommentsState.messages.map((comment, i) => {
 						console.log(comment, "<<<<<");
 						return (
-							<>
-								<p key={comment.from + i}>{comment.comment}</p>
+							<div key={comment.from + i}>
+								<p>{comment.comment}</p>
 								<p>
 									by {comment.from} at{" "}
 									{new Date(comment.updatedAt).toUTCString()}
 								</p>
-							</>
+							</div>
 						);
 					})}
 				</>
