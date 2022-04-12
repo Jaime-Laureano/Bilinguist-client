@@ -13,16 +13,20 @@ import EditComment from "./pages/EditComment";
 import FindTeacher from "./pages/FindTeacher";
 import LogoutPage from "./pages/LogoutPage";
 import AddTeacherForm from "./components/AddTeacherForm";
+import {useState} from "react"
 
 function App() {
+
+const [user, setUser] = useState()
+
 	return (
 		<div className='App'>
 			<NavBar />
 			<Routes>
 				<Route path='/' element={<HomePage />} />
 				<Route path='/signup' element={<SignupForm />} />
-				<Route path='/login' element={<LoginForm />} />
-				<Route path='/student-profile' element={<StudentProfilePage />} />
+				<Route path='/login' element={<LoginForm handleSetUser = {setUser} />} />
+				<Route path='/student-profile' element={<StudentProfilePage handleSetUser= {setUser } currentUser = {user}/>} />
 				<Route path='/teacher-profile' element={<TeacherProfilePage />} />
 				<Route path='/practice' element={<Practice />} />
 				<Route path='/video-chat' element={<VideoChat />} />

@@ -42,7 +42,7 @@ function MessageBoard() {
 					id='filled-basic'
 					label='Add your comment'
 					variant='filled'
-					name='addComment'
+					name='comment'
 					onChange={onFormChange}
 					value={commentFormState.comment}
 					required
