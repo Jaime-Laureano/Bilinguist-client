@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { FormGroup, Button } from "@mui/material";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function LogoutPage() {
 	const [loginFormState, setLoginFormState] = useState({
 		email: "",
 		password: "",
 	});
+	const navigate = useNavigate();
+
 	useEffect(() => {}, []);
 	const handleSubmit = async () => {
 		try {
@@ -17,6 +20,7 @@ function LogoutPage() {
 			);
 			console.log(data.data.isTeacher, "Gordie login data");
 			setLoginFormState({});
+			navigate("/");
 		} catch (err) {
 			console.error(err, "<<<<<");
 			// console.log(err.response);
