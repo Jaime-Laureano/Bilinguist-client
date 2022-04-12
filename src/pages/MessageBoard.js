@@ -1,8 +1,7 @@
 import { FormGroup, TextField, Button } from "@mui/material";
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import fakeComments from "../data";
 
 function MessageBoard() {
 	const [commentFormState, setCommentFormState] = useState({
@@ -10,10 +9,7 @@ function MessageBoard() {
 		from: "randomName",
 	});
 	const [allCommentsState, setAllCommentsState] = useState();
-
-	useEffect(() => {
-		allComments();
-	}, []);
+	const navigate = useNavigate();
 
 	const allComments = async () => {
 		try {
@@ -30,11 +26,16 @@ function MessageBoard() {
 		}
 	};
 
-	const onFormChange = (event) =>
+	useEffect(() => {
+		allComments();
+	}, []);
+
+	const onFormChange = (event) => {
 		setCommentFormState({
 			...commentFormState,
 			[event.target.name]: event.target.value,
 		});
+	};
 
 	const handleSubmit = async () => {
 		console.log(commentFormState, "from clienttttttt");
@@ -44,14 +45,12 @@ function MessageBoard() {
 				commentFormState,
 				{ withCredentials: true },
 			);
-			console.log(data.data, "Scouse");
-			setCommentFormState({});
+			setCommentFormState({ comment: "" });
+			allComments();
 		} catch (err) {
 			console.error(err, "<<<<<");
 		}
 	};
-
-	console.log(allCommentsState, "lllllllllllll whyyy is this happeninggggg");
 
 	return (
 		<div>
@@ -72,12 +71,15 @@ function MessageBoard() {
 					Submit
 				</Button>
 			</FormGroup>
-			<>
-				{allCommentsState.messages.map((comment, i) => {
-					console.log("am i here", comment.from);
-					return <p key={comment.from + i}>{comment.comment}</p>;
-				})}
-			</>
+			{allCommentsState ? (
+				<>
+					{allCommentsState.messages.map((comment, i) => {
+						return <p key={comment.from + i}>{comment.comment}</p>;
+					})}
+				</>
+			) : (
+				<p>Loadinggggggggggggg</p>
+			)}
 			<Link to='/message-board/:comment_id'>Edit Comment here</Link>
 		</div>
 	);
