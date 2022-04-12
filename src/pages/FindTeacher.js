@@ -5,11 +5,14 @@ import axios from "axios";
 function FindTeacher() {
 	const [allteachersSate, setAllTeachersState] = useState();
 
-	useEffect(() => {}, []);
+	useEffect(() => {
+		getTeachers();
+	}, []);
 
 	const getTeachers = async () => {
 		try {
 			const data = await axios.get("http://localhost:5005/api/find-teacher");
+			console.log(data, "teachers*****");
 		} catch (err) {
 			console.log(err, "errrrrr");
 		}
