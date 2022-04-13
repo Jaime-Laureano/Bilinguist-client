@@ -7,12 +7,14 @@ import StudentProfilePage from "./pages/StudentProfilePage";
 import TeacherProfilePage from "./pages/TeacherProfilePage";
 import Practice from "./pages/Practice";
 import HomePage from "./pages/HomePage";
-import VideoChat from "./pages/VideoChat";
+import JoinRoom from "./pages/VideoChat";
 import MessageBoard from "./pages/MessageBoard";
 import EditComment from "./pages/EditComment";
 import FindTeacher from "./pages/FindTeacher";
 import LogoutPage from "./pages/LogoutPage";
 import AddTeacherForm from "./components/AddTeacherForm";
+import VideoCall from "./pages/VideoCall";
+
 import {useState} from "react"
 
 function App() {
@@ -29,12 +31,13 @@ const [user, setUser] = useState()
 				<Route path='/student-profile' element={<StudentProfilePage handleSetUser= {setUser } currentUser = {user}/>} />
 				<Route path='/teacher-profile' element={<TeacherProfilePage />} />
 				<Route path='/practice' element={<Practice />} />
-				<Route path='/video-chat' element={<VideoChat />} />
+				<Route path='/video-chat' element={<JoinRoom />} />
 				<Route path='/message-board' element={<MessageBoard />} />
 				<Route path='/message-board/:comment_id' element={<EditComment />} />
 				<Route path='/find-teacher' element={<FindTeacher />} />
 				<Route path='/find-teacher/add-teacher' element={<AddTeacherForm />} />
 				<Route path='/logout' element={<LogoutPage />} />
+				<Route path="/video-call/:id" element={<VideoCall />} />
 			</Routes>
 		</div>
 	);
