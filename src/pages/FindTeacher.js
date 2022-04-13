@@ -4,7 +4,7 @@ import axios from "axios";
 
 function FindTeacher() {
 	const [allTeachersState, setAllTeachersState] = useState();
-
+	useEffect(() => {
 	const getTeachers = async () => {
 		try {
 			const { data } = await axios.get(
@@ -13,15 +13,15 @@ function FindTeacher() {
 					withCredentials: true,
 				},
 			);
-			console.log(data.allTeachers, "teachers*****");
+			// console.log(data.allTeachers, "teachers*****");
 			setAllTeachersState({ ...data });
-			console.log(allTeachersState, "@@@@@@@");
+			// console.log(allTeachersState, "@@@@@@@");
 		} catch (err) {
 			console.log(err, "errrrrr");
 		}
 	};
 
-	useEffect(() => {
+	
 		getTeachers();
 	}, []);
 	return (
