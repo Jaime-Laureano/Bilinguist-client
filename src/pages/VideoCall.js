@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { API_URL } from "../config";
 
 export default function VideoCall() {
   const { id } = useParams();
@@ -10,7 +11,7 @@ export default function VideoCall() {
     const domain = "https://bilinguist-videochat.daily.co/";
 
     axios
-      .get(`http://localhost:5005/api/video-call/${id}`)
+      .get(`${API_URL}/video-call/${id}`)
     //   process.env the above
       .then((res) => {
         if (res.status === 200) {
