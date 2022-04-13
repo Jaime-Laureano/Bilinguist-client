@@ -1,6 +1,8 @@
 import React from "react";
 import axios from "axios";
+import { API_URL } from "../config";
 // import { useNavigate } from "react-router-dom";
+
 
 
 
@@ -16,7 +18,7 @@ function StudentProfilePage({currentUser, handleSetUser}) {
 		imageFormData.append("userId", currentUser._id );
 
 		async function sendImage() {
-			let updatedUser = await axios.post("http://localhost:5005/api/student-profile", imageFormData, {
+			let updatedUser = await axios.post(`${API_URL}/student-profile`, imageFormData, {
 			  withCredentials: true,
 			});
 			console.log("saved", updatedUser.data);

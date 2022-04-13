@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { FormGroup, Button } from "@mui/material";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { API_URL } from "../config";
 
 function LogoutPage() {
 	const [loginFormState, setLoginFormState] = useState({
@@ -14,7 +15,7 @@ function LogoutPage() {
 	const handleSubmit = async () => {
 		try {
 			const data = await axios.post(
-				"http://localhost:5005/api/logout",
+				`${API_URL}/logout`,
 				loginFormState,
 				{ withCredentials: true },
 			);
