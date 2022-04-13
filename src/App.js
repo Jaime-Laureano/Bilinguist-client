@@ -13,24 +13,42 @@ import EditComment from "./pages/EditComment";
 import FindTeacher from "./pages/FindTeacher";
 import LogoutPage from "./pages/LogoutPage";
 import AddTeacherForm from "./components/AddTeacherForm";
-import {useState} from "react"
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 function App() {
-
-const [user, setUser] = useState()
+	const [user, setUser] = useState();
+	useEffect(() => {
+		const data = async () => {
+			const currentUser = await axios.get("http://localhost:5005/api/user", {
+				withCredentials: true,
+			});
+			setUser(currentUser.data);
+		};
+		data();
+	}, []);
 
 	return (
 		<div className='App'>
 			<NavBar />
 			<Routes>
 				<Route path='/' element={<HomePage />} />
+				<Route path='/user' />
 				<Route path='/signup' element={<SignupForm />} />
-				<Route path='/login' element={<LoginForm handleSetUser = {setUser} />} />
-				<Route path='/student-profile' element={<StudentProfilePage handleSetUser= {setUser } currentUser = {user}/>} />
+				<Route path='/login' element={<LoginForm handleSetUser={setUser} />} />
+				<Route
+					path='/student-profile'
+					element={
+						<StudentProfilePage handleSetUser={setUser} currentUser={user} />
+					}
+				/>
 				<Route path='/teacher-profile' element={<TeacherProfilePage />} />
 				<Route path='/practice' element={<Practice />} />
 				<Route path='/video-chat' element={<VideoChat />} />
-				<Route path='/message-board' element={<MessageBoard />} />
+				<Route
+					path='/message-board'
+					element={<MessageBoard handleSetUser={setUser} currentUser={user} />}
+				/>
 				<Route path='/message-board/:comment_id' element={<EditComment />} />
 				<Route path='/find-teacher' element={<FindTeacher />} />
 				<Route path='/find-teacher/add-teacher' element={<AddTeacherForm />} />

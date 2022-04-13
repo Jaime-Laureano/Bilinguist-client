@@ -3,7 +3,8 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-function MessageBoard() {
+function MessageBoard({ currentUser }) {
+	console.log(currentUser, "{{{}{{}{}{}{}{{}{{}{}}}}}}}");
 	const [commentFormState, setCommentFormState] = useState({
 		comment: "",
 		from: "randomName",
@@ -73,7 +74,6 @@ function MessageBoard() {
 			{allCommentsState ? (
 				<>
 					{allCommentsState.messages.map((comment, i) => {
-						console.log(comment, "<<<<<");
 						return (
 							<div key={comment.from + i}>
 								<p>{comment.comment}</p>
@@ -81,6 +81,24 @@ function MessageBoard() {
 									by {comment.from} at{" "}
 									{new Date(comment.updatedAt).toUTCString()}
 								</p>
+								{comment.from === currentUser.fullName ? (
+									<>
+										<Button
+											type='submit'
+											variant='contained'
+											onClick={handleSubmit}>
+											Edit
+										</Button>{" "}
+										<Button
+											type='submit'
+											variant='contained'
+											onClick={handleSubmit}>
+											Delete
+										</Button>
+									</>
+								) : (
+									<p></p>
+								)}
 							</div>
 						);
 					})}
