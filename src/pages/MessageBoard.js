@@ -51,6 +51,24 @@ function MessageBoard({ currentUser }) {
 			console.error(err, "<<<<<");
 		}
 	};
+	const handleEdit = async () => {};
+
+	const handleDelete = async (event) => {
+		console.log(event.target.name, "iiiiiiii");
+		const id = event.target.name;
+		try {
+			await axios.post(
+				`http://localhost:5005/api/message-board/${id}`,
+				{},
+
+				{ withCredentials: true },
+			);
+			setCommentFormState({ comment: "" });
+			allComments();
+		} catch (err) {
+			console.error(err, "<<<<<");
+		}
+	};
 
 	return (
 		<div>
@@ -86,13 +104,14 @@ function MessageBoard({ currentUser }) {
 										<Button
 											type='submit'
 											variant='contained'
-											onClick={handleSubmit}>
+											onClick={handleEdit}>
 											Edit
 										</Button>{" "}
 										<Button
-											type='submit'
+											type='delete'
 											variant='contained'
-											onClick={handleSubmit}>
+											onClick={handleDelete}
+											name={comment._id}>
 											Delete
 										</Button>
 									</>
