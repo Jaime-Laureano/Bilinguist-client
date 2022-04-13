@@ -2,6 +2,7 @@ import { FormGroup, TextField, Button } from "@mui/material";
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { API_URL } from "../config";
 
 function AddTeacherForm() {
 	const [addTeacherFormState, setAddTeacherFormState] = useState({
@@ -26,7 +27,7 @@ function AddTeacherForm() {
 		console.log(addTeacherFormState);
 		try {
 			const data = await axios.post(
-				"http://localhost:5005/api/add-teacher",
+				`${API_URL}/add-teacher`,
 				addTeacherFormState,
 				{ withCredentials: true },
 			);

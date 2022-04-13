@@ -16,13 +16,14 @@ import AddTeacherForm from "./components/AddTeacherForm";
 import VideoCall from "./pages/VideoCall";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { API_URL } from "./config";
 
 
 function App() {
 	const [user, setUser] = useState();
 	useEffect(() => {
 		const data = async () => {
-			const currentUser = await axios.get("http://localhost:5005/api/user", {
+			const currentUser = await axios.get(`${API_URL}/user`, {
 				withCredentials: true,
 			});
 			setUser(currentUser.data);

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { API_URL } from "../config";
 
 function FindTeacher() {
 	const [allTeachersState, setAllTeachersState] = useState();
@@ -8,7 +9,7 @@ function FindTeacher() {
 	const getTeachers = async () => {
 		try {
 			const { data } = await axios.get(
-				"http://localhost:5005/api/find-teacher",
+				`${API_URL}/find-teacher`,
 				{
 					withCredentials: true,
 				},

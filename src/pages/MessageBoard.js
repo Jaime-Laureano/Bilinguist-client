@@ -2,6 +2,7 @@ import { FormGroup, TextField, Button } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { API_URL } from "../config";
 
 function MessageBoard({ currentUser }) {
 	console.log(currentUser, "{{{}{{}{}{}{}{{}{{}{}}}}}}}");
@@ -14,7 +15,7 @@ function MessageBoard({ currentUser }) {
 	const allComments = async () => {
 		try {
 			const { data } = await axios.get(
-				"http://localhost:5005/api/message-board",
+				`${API_URL}/message-board`,
 				{
 					withCredentials: true,
 				},
@@ -41,7 +42,7 @@ function MessageBoard({ currentUser }) {
 		console.log(commentFormState, "from clienttttttt");
 		try {
 			await axios.post(
-				"http://localhost:5005/api/message-board",
+				`${API_URL}/message-board`,
 				commentFormState,
 				{ withCredentials: true },
 			);
