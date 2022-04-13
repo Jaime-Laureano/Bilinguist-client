@@ -1,12 +1,12 @@
 import React from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 
 
 function StudentProfilePage({currentUser, handleSetUser}) {
 	console.log(currentUser, "this is current user")
-	const navigate = useNavigate();
+	// const navigate = useNavigate();
 
 	function handleUserImage(event) {
 		event.preventDefault();
