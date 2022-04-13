@@ -23,7 +23,6 @@ function App() {
 			const currentUser = await axios.get("http://localhost:5005/api/user", {
 				withCredentials: true,
 			});
-			console.log(currentUser.data, "Current userssssssssss");
 			setUser(currentUser.data);
 		};
 		data();
@@ -46,7 +45,10 @@ function App() {
 				<Route path='/teacher-profile' element={<TeacherProfilePage />} />
 				<Route path='/practice' element={<Practice />} />
 				<Route path='/video-chat' element={<VideoChat />} />
-				<Route path='/message-board' element={<MessageBoard />} />
+				<Route
+					path='/message-board'
+					element={<MessageBoard handleSetUser={setUser} currentUser={user} />}
+				/>
 				<Route path='/message-board/:comment_id' element={<EditComment />} />
 				<Route path='/find-teacher' element={<FindTeacher />} />
 				<Route path='/find-teacher/add-teacher' element={<AddTeacherForm />} />
