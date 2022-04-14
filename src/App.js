@@ -57,7 +57,7 @@ function App() {
 					element={<MessageBoard handleSetUser={setUser} currentUser={user} />}
 				/>
 
-				<Route path='/message-board/:comment_id' element={<EditComment />} />
+				<Route path='/message-board/:id' element={<EditComment />} />
 				<Route
 					path='/find-teacher'
 					element={<FindTeacher handleSetUser={setUser} currentUser={user} />}

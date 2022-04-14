@@ -27,6 +27,8 @@ function FindTeacher({ currentUser }) {
 	const handleSubmit = () => {
 		console.log("hi");
 	};
+	console.log(allTeachersState, "JJJJJJJJJ");
+
 	return (
 		<div>
 			<h1>list of all teachers here</h1>
