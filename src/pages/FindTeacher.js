@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { Button } from "@mui/material";
 
 function FindTeacher() {
 	const [allTeachersState, setAllTeachersState] = useState();
@@ -20,7 +21,7 @@ function FindTeacher() {
 			console.log(err, "errrrrr");
 		}
 	};
-
+	const handleSubmit = async () => {};
 	useEffect(() => {
 		getTeachers();
 	}, []);
@@ -45,6 +46,12 @@ function FindTeacher() {
 								<p>My goals for you: {teacher.goals}</p>
 								<p>Fun fact about me: {teacher.funFact}</p>
 								<p>Hourly rate : €{teacher.price}</p>
+								<Button
+									type='submit'
+									variant='contained'
+									onClick={handleSubmit}>
+									Contact me
+								</Button>
 							</div>
 						);
 					})}

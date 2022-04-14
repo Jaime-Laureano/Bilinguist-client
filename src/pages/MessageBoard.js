@@ -1,15 +1,15 @@
 import { FormGroup, TextField, Button } from "@mui/material";
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function MessageBoard({ currentUser }) {
-	console.log(currentUser, "{{{}{{}{}{}{}{{}{{}{}}}}}}}");
 	const [commentFormState, setCommentFormState] = useState({
 		comment: "",
 		from: "randomName",
 	});
 	const [allCommentsState, setAllCommentsState] = useState();
+	const navigate = useNavigate();
 
 	const allComments = async () => {
 		try {
@@ -51,10 +51,12 @@ function MessageBoard({ currentUser }) {
 			console.error(err, "<<<<<");
 		}
 	};
-	const handleEdit = async () => {};
+	const handleEdit = async (event) => {
+		const id = event.target.name;
+		navigate(`/message-board/${id}`);
+	};
 
 	const handleDelete = async (event) => {
-		console.log(event.target.name, "iiiiiiii");
 		const id = event.target.name;
 		try {
 			await axios.post(
@@ -104,7 +106,8 @@ function MessageBoard({ currentUser }) {
 										<Button
 											type='submit'
 											variant='contained'
-											onClick={handleEdit}>
+											onClick={handleEdit}
+											name={comment._id}>
 											Edit
 										</Button>{" "}
 										<Button
@@ -125,7 +128,6 @@ function MessageBoard({ currentUser }) {
 			) : (
 				<p>Loadinggggggggggggg</p>
 			)}
-			<Link to='/message-board/:comment_id'>Edit Comment here</Link>
 		</div>
 	);
 }
