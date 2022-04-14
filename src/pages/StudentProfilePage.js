@@ -49,7 +49,7 @@ function StudentProfilePage({currentUser, handleSetUser}) {
 					<img
 						src={currentUser.imageUrl}
 						alt='profile pic'
-						style={{ height: "100px" }}
+						style={{ height: "175px" }}
 					/>
 				) : null}
 				{currentUser ? (
