@@ -1,28 +1,34 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+
 import { Button } from "@mui/material";
+
+import { API_URL } from "../config";
+
 
 function FindTeacher() {
 	const [allTeachersState, setAllTeachersState] = useState();
-
+	useEffect(() => {
 	const getTeachers = async () => {
 		try {
 			const { data } = await axios.get(
-				"http://localhost:5005/api/find-teacher",
+				`${API_URL}/find-teacher`,
 				{
 					withCredentials: true,
 				},
 			);
-			console.log(data.allTeachers, "teachers*****");
+			// console.log(data.allTeachers, "teachers*****");
 			setAllTeachersState({ ...data });
-			console.log(allTeachersState, "@@@@@@@");
+			// console.log(allTeachersState, "@@@@@@@");
 		} catch (err) {
 			console.log(err, "errrrrr");
 		}
 	};
+
 	const handleSubmit = async () => {};
 	useEffect(() => {
+
 		getTeachers();
 	}, []);
 	return (

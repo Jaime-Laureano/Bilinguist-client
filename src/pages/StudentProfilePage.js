@@ -1,10 +1,18 @@
 import React from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { API_URL } from "../config";
+// import { useNavigate } from "react-router-dom";
 
-function StudentProfilePage({ currentUser, handleSetUser }) {
-	console.log(currentUser, "this is current user");
-	const navigate = useNavigate();
+
+
+
+
+
+
+function StudentProfilePage({currentUser, handleSetUser}) {
+	console.log(currentUser, "this is current user")
+	// const navigate = useNavigate();
+
 
 	function handleUserImage(event) {
 		event.preventDefault();
@@ -14,13 +22,11 @@ function StudentProfilePage({ currentUser, handleSetUser }) {
 		imageFormData.append("userId", currentUser._id);
 
 		async function sendImage() {
-			let updatedUser = await axios.post(
-				"http://localhost:5005/api/student-profile",
-				imageFormData,
-				{
-					withCredentials: true,
-				},
-			);
+
+			let updatedUser = await axios.post(`${API_URL}/student-profile`, imageFormData, {
+			  withCredentials: true,
+			});
+      
 			console.log("saved", updatedUser.data);
 			let _id = updatedUser.data._id;
 			let fullName = updatedUser.data.fullName;

@@ -2,6 +2,7 @@ import { FormGroup, TextField, Button } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { API_URL } from "../config";
 
 function LoginForm({handleSetUser}) {
 	const [loginFormState, setLoginFormState] = useState({
@@ -20,7 +21,7 @@ function LoginForm({handleSetUser}) {
 	const handleSubmit = async () => {
 		try {
 			const data = await axios.post(
-				"http://localhost:5005/api/login",
+				`${API_URL}/login`,
 				loginFormState,
 				{ withCredentials: true },
 			);

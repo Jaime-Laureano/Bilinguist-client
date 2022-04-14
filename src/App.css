@@ -2,6 +2,11 @@
   text-align: center;
 }
 
+body {
+  background-color: #b16ddf;
+  color: white;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -35,4 +40,34 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.nav {
+  background: #7124a3;
+  color: white;
+  height: 75px;
+  width: 100vw;
+  display: flex;
+  justify-content: space-around;
+  font-size: 25px;
+  font-weight: bold;
+  align-items: center;
+}
+
+/* .nav:visited {
+  color: white;
+} */
+
+.home h1 {
+  font-size: 40px;
+}
+
+.home {
+  align-items: center;
+  font-size: 40px;
+  padding-bottom: 150px;
+}
+
+.big-logo {
+  padding: 25px;
 }
