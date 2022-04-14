@@ -18,8 +18,8 @@ import VideoCall from "./pages/VideoCall";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { API_URL } from "./config";
-import Footer from './components/Footer';
-import Error404 from './pages/Error404';
+import Footer from "./components/Footer";
+import Error404 from "./pages/Error404";
 
 function App() {
 	const [user, setUser] = useState();
@@ -58,13 +58,15 @@ function App() {
 				/>
 
 				<Route path='/message-board/:comment_id' element={<EditComment />} />
-				<Route path='/find-teacher' element={<FindTeacher />} />
+				<Route
+					path='/find-teacher'
+					element={<FindTeacher handleSetUser={setUser} currentUser={user} />}
+				/>
 				<Route path='/find-teacher/add-teacher' element={<AddTeacherForm />} />
 				<Route path='/logout' element={<LogoutPage />} />
 
-				<Route path="/video-call/:id" element={<VideoCall />} />
-				<Route path="*" element={< Error404 />} />
-
+				<Route path='/video-call/:id' element={<VideoCall />} />
+				<Route path='*' element={<Error404 />} />
 			</Routes>
 			<Footer />
 		</div>

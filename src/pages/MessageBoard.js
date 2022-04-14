@@ -1,6 +1,6 @@
 import { FormGroup, TextField, Button } from "@mui/material";
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { API_URL } from "../config";
 
@@ -14,12 +14,9 @@ function MessageBoard({ currentUser }) {
 
 	const allComments = async () => {
 		try {
-			const { data } = await axios.get(
-				`${API_URL}/message-board`,
-				{
-					withCredentials: true,
-				},
-			);
+			const { data } = await axios.get(`${API_URL}/message-board`, {
+				withCredentials: true,
+			});
 			console.log(data.messages, "<<< allComments");
 			setAllCommentsState({ ...data });
 		} catch (err) {
@@ -41,11 +38,9 @@ function MessageBoard({ currentUser }) {
 	const handleSubmit = async () => {
 		console.log(commentFormState, "from clienttttttt");
 		try {
-			await axios.post(
-				`${API_URL}/message-board`,
-				commentFormState,
-				{ withCredentials: true },
-			);
+			await axios.post(`${API_URL}/message-board`, commentFormState, {
+				withCredentials: true,
+			});
 			setCommentFormState({ comment: "" });
 			allComments();
 		} catch (err) {
