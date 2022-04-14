@@ -13,6 +13,18 @@ function EditTeacherBio() {
 
 	console.log(id, "<<<< id");
 
+	const getBio = async () => {
+		try {
+			const { data } = await axios.get(`${API_URL}/add-teacher/${id}`, {
+				withCredentials: true,
+			});
+			console.log(data, "<<<<<data");
+			setBioState({ ...data.message });
+		} catch (err) {
+			console.error(err, "<<<<<");
+		}
+	};
+
 	const editComment = async () => {
 		try {
 			await axios.put(`${API_URL}/add-teacher/${id}`, bioState, {
@@ -49,17 +61,6 @@ function EditTeacherBio() {
 
 	useEffect(() => {
 		console.log("inuseeffect");
-		const getBio = async () => {
-			try {
-				const { data } = await axios.get(`${API_URL}/add-teacher/${id}`, {
-					withCredentials: true,
-				});
-				console.log(data, "<<<<<data");
-				setBioState({ ...data.message });
-			} catch (err) {
-				console.error(err, "<<<<<");
-			}
-		};
 
 		getBio();
 	});
