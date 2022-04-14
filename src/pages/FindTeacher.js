@@ -35,8 +35,8 @@ function FindTeacher({ currentUser }) {
 	};
 
 	return (
-		<div>
-			<h1>list of all teachers here</h1>
+		<div className="find-teacher">
+			<h1>Here is a list of local teachers...</h1>
 			{currentUser.isTeacher ? (
 				<Link to='/find-teacher/add-teacher'>
 					Add Yourself as a teacher here
