@@ -68,8 +68,10 @@ function App() {
 				<Route path='/video-call/:id' element={<VideoCall />} />
 				<Route path='*' element={<Error404 />} />
 			</Routes>
-			<Footer />
+			<div className="footer-space"></div>
+			<div><Footer /></div>
 		</div>
+		
 	);
 }
 

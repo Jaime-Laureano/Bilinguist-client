@@ -11,11 +11,7 @@ import {
 const Footer = () => {
   return (
     <Box>
-      <h1 style={{ color: "white", 
-                   textAlign: "center", 
-                   marginTop: "-50px" }}>
-        Bi-Linguist
-      </h1>
+      
       <Container>
         <Row>
           <Column>
@@ -33,10 +29,10 @@ const Footer = () => {
           </Column>
           <Column>
             <Heading>Contact Us</Heading>
-            <FooterLink href="#">Uttar Pradesh</FooterLink>
-            <FooterLink href="#">Ahemdabad</FooterLink>
-            <FooterLink href="#">Indore</FooterLink>
-            <FooterLink href="#">Mumbai</FooterLink>
+            <FooterLink href="#">Lisbon</FooterLink>
+            <FooterLink href="#">Barcelona</FooterLink>
+            <FooterLink href="#">Berlin</FooterLink>
+            <FooterLink href="#">Texas</FooterLink>
           </Column>
           <Column>
             <Heading>Social Media</Heading>
