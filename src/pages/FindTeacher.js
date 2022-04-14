@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Button } from "@mui/material";
 import { API_URL } from "../config";
@@ -7,6 +7,7 @@ import { API_URL } from "../config";
 function FindTeacher({ currentUser }) {
 	console.log(currentUser, "<<<<<<<<<");
 	const [allTeachersState, setAllTeachersState] = useState();
+	const navigate = useNavigate();
 	useEffect(() => {
 		const getTeachers = async () => {
 			try {
@@ -24,9 +25,15 @@ function FindTeacher({ currentUser }) {
 		getTeachers();
 	}, []);
 
+	const handleEdit = async (event) => {
+		const id = event.target.name;
+		navigate(`/add-teacher/${id}`);
+	};
+
 	const handleSubmit = () => {
 		console.log("hi");
 	};
+
 	return (
 		<div>
 			<h1>list of all teachers here</h1>
@@ -62,6 +69,18 @@ function FindTeacher({ currentUser }) {
 									onClick={handleSubmit}>
 									Contact me
 								</Button>
+								{currentUser.isTeacher &&
+								currentUser.fullName === teacher.fullName ? (
+									<Button
+										type='submit'
+										variant='contained'
+										onClick={handleEdit}
+										name={teacher._id}>
+										Edit Bio
+									</Button>
+								) : (
+									<p></p>
+								)}
 							</div>
 						);
 					})}

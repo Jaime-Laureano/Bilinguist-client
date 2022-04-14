@@ -56,7 +56,7 @@ function MessageBoard({ currentUser }) {
 		const id = event.target.name;
 		try {
 			await axios.post(
-				`http://localhost:5005/api/message-board/${id}`,
+				`${API_URL}message-board/${id}`,
 				{},
 
 				{ withCredentials: true },
@@ -72,7 +72,6 @@ function MessageBoard({ currentUser }) {
 		<div>
 			<h1>Message Board goes hereeeeeeeeee</h1>
 			<h3>Add your message here. Say hi to our community</h3>
-
 			<FormGroup>
 				<TextField
 					id='filled-basic'

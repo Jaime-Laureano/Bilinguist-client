@@ -14,6 +14,7 @@ import FindTeacher from "./pages/FindTeacher";
 import LogoutPage from "./pages/LogoutPage";
 import AddTeacherForm from "./components/AddTeacherForm";
 import VideoCall from "./pages/VideoCall";
+import EditTeacherBio from "./pages/EditTeacherBio";
 
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -57,12 +58,13 @@ function App() {
 					element={<MessageBoard handleSetUser={setUser} currentUser={user} />}
 				/>
 
-				<Route path='/message-board/:comment_id' element={<EditComment />} />
+				<Route path='/message-board/:id' element={<EditComment />} />
 				<Route
 					path='/find-teacher'
 					element={<FindTeacher handleSetUser={setUser} currentUser={user} />}
 				/>
 				<Route path='/find-teacher/add-teacher' element={<AddTeacherForm />} />
+				<Route path='/add-teacher/:id' element={<EditTeacherBio />} />
 				<Route path='/logout' element={<LogoutPage />} />
 
 				<Route path='/video-call/:id' element={<VideoCall />} />
