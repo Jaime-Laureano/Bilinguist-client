@@ -43,12 +43,10 @@ function SignupForm() {
 		} catch (err) {
 			console.error(err, "<<<<<");
 		}
-
 	};
 
 	return (
-
-	<div>
+		<div>
 			<FormGroup>
 				<TextField
 					id='filled-basic'
@@ -112,8 +110,7 @@ function SignupForm() {
 					Submit
 				</Button>
 			</FormGroup>
-	</div>
-		
+		</div>
 	);
 }
 

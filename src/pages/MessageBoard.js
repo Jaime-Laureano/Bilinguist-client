@@ -1,16 +1,16 @@
 import { FormGroup, TextField, Button } from "@mui/material";
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { API_URL } from "../config";
 
 function MessageBoard({ currentUser }) {
-	console.log(currentUser, "{{{}{{}{}{}{}{{}{{}{}}}}}}}");
 	const [commentFormState, setCommentFormState] = useState({
 		comment: "",
 		from: "randomName",
 	});
 	const [allCommentsState, setAllCommentsState] = useState();
+	const navigate = useNavigate();
 
 	const allComments = async () => {
 		try {
@@ -44,6 +44,26 @@ function MessageBoard({ currentUser }) {
 			await axios.post(
 				`${API_URL}/message-board`,
 				commentFormState,
+				{ withCredentials: true },
+			);
+			setCommentFormState({ comment: "" });
+			allComments();
+		} catch (err) {
+			console.error(err, "<<<<<");
+		}
+	};
+	const handleEdit = async (event) => {
+		const id = event.target.name;
+		navigate(`/message-board/${id}`);
+	};
+
+	const handleDelete = async (event) => {
+		const id = event.target.name;
+		try {
+			await axios.post(
+				`http://localhost:5005/api/message-board/${id}`,
+				{},
+
 				{ withCredentials: true },
 			);
 			setCommentFormState({ comment: "" });
@@ -87,13 +107,15 @@ function MessageBoard({ currentUser }) {
 										<Button
 											type='submit'
 											variant='contained'
-											onClick={handleSubmit}>
+											onClick={handleEdit}
+											name={comment._id}>
 											Edit
 										</Button>{" "}
 										<Button
-											type='submit'
+											type='delete'
 											variant='contained'
-											onClick={handleSubmit}>
+											onClick={handleDelete}
+											name={comment._id}>
 											Delete
 										</Button>
 									</>
@@ -107,7 +129,6 @@ function MessageBoard({ currentUser }) {
 			) : (
 				<p>Loadinggggggggggggg</p>
 			)}
-			<Link to='/message-board/:comment_id'>Edit Comment here</Link>
 		</div>
 	);
 }

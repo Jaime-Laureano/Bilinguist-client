@@ -14,12 +14,12 @@ import FindTeacher from "./pages/FindTeacher";
 import LogoutPage from "./pages/LogoutPage";
 import AddTeacherForm from "./components/AddTeacherForm";
 import VideoCall from "./pages/VideoCall";
+
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { API_URL } from "./config";
 import Footer from './components/Footer';
 import Error404 from './pages/Error404';
-
 
 function App() {
 	const [user, setUser] = useState();
@@ -51,7 +51,7 @@ function App() {
 				<Route path='/practice' element={<Practice />} />
 
 				<Route path='/video-chat' element={<JoinRoom />} />
-			
+
 				<Route
 					path='/message-board'
 					element={<MessageBoard handleSetUser={setUser} currentUser={user} />}
@@ -61,8 +61,10 @@ function App() {
 				<Route path='/find-teacher' element={<FindTeacher />} />
 				<Route path='/find-teacher/add-teacher' element={<AddTeacherForm />} />
 				<Route path='/logout' element={<LogoutPage />} />
+
 				<Route path="/video-call/:id" element={<VideoCall />} />
 				<Route path="*" element={< Error404 />} />
+
 			</Routes>
 			<Footer />
 		</div>
