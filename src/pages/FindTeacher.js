@@ -4,7 +4,8 @@ import axios from "axios";
 import { Button } from "@mui/material";
 import { API_URL } from "../config";
 
-function FindTeacher() {
+function FindTeacher({ currentUser }) {
+	console.log(currentUser, "<<<<<<<<<");
 	const [allTeachersState, setAllTeachersState] = useState();
 	useEffect(() => {
 		const getTeachers = async () => {
@@ -29,7 +30,14 @@ function FindTeacher() {
 	return (
 		<div>
 			<h1>list of all teachers here</h1>
-			<Link to='/find-teacher/add-teacher'>Add Yourself as a teacher here</Link>
+			{currentUser.isTeacher ? (
+				<Link to='/find-teacher/add-teacher'>
+					Add Yourself as a teacher here
+				</Link>
+			) : (
+				<p>Find your next teacher in {currentUser.city}</p>
+			)}
+
 			{allTeachersState ? (
 				<>
 					{allTeachersState.allTeachers.map((teacher, i) => {
@@ -47,6 +55,7 @@ function FindTeacher() {
 								<p>My goals for you: {teacher.goals}</p>
 								<p>Fun fact about me: {teacher.funFact}</p>
 								<p>Hourly rate : €{teacher.price}</p>
+
 								<Button
 									type='submit'
 									variant='contained'
