@@ -1,3 +1,40 @@
+#Welcome to Bi-Linguist
+
+A project inspired by the desire to communicate fluently and connect with communities. This app was built with the MERN stack (MongoDB, Express, React and Node.js).
+
+## Available endpoints
+
+## GET
+
+- /
+- /signup
+- /login
+- /user
+- /message-board
+- /message-board/:id
+- /find-teacher
+- /video-chat
+- /video-call/:id
+- /practise
+- /add-teacher/:id
+- /student-profile
+- /teacher-profile
+
+## POST
+
+- /signup
+- /login
+- /logout
+- /message-board
+- /message-board/:id
+- /add-teacher
+- /add-teacher/:id
+
+## PUT
+
+- /message-board/:id
+- /add-teacher/:id
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
