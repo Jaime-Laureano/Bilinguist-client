@@ -31,7 +31,7 @@ function FindTeacher({ currentUser }) {
 	};
 
 	const handleSubmit = () => {
-		console.log("hi");
+		navigate("/message-board");
 	};
 
 	return (

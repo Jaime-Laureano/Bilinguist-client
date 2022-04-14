@@ -31,17 +31,6 @@ function EditTeacherBio() {
 			[event.target.name]: event.target.value,
 		});
 	};
-	const getBio = async () => {
-		try {
-			const { data } = await axios.get(`${API_URL}/add-teacher/${id}`, {
-				withCredentials: true,
-			});
-			console.log(data, "<<<<<data");
-			setBioState({ ...data.message });
-		} catch (err) {
-			console.error(err, "<<<<<");
-		}
-	};
 
 	const handleDelete = async () => {
 		try {
@@ -60,9 +49,20 @@ function EditTeacherBio() {
 
 	useEffect(() => {
 		console.log("inuseeffect");
+		const getBio = async () => {
+			try {
+				const { data } = await axios.get(`${API_URL}/add-teacher/${id}`, {
+					withCredentials: true,
+				});
+				console.log(data, "<<<<<data");
+				setBioState({ ...data.message });
+			} catch (err) {
+				console.error(err, "<<<<<");
+			}
+		};
 
 		getBio();
-	}, []);
+	});
 
 	return (
 		<div>
