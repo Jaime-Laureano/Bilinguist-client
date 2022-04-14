@@ -91,3 +91,8 @@ body {
   padding-top: 10px;
   font-size: 30px;
 }
+
+.join-meeting {
+    padding: 50px;
+    margin-bottom: -50px;
+}
