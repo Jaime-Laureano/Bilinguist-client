@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { API_URL } from "../config";
-// import { useNavigate } from "react-router-dom";
+import langtravel from "../logos/langtravel.jpeg"
 
 
 
@@ -43,13 +43,14 @@ function StudentProfilePage({currentUser, handleSetUser}) {
 	}
 
 	return (
-		<div>
+		<div className="profile-page">
 			<div>
 				{currentUser.imageUrl ? (
 					<img
+						className="profile-pic"
 						src={currentUser.imageUrl}
 						alt='profile pic'
-						style={{ height: "175px" }}
+						style={{ height: "200px" }}
 					/>
 				) : null}
 				{currentUser ? (
@@ -59,6 +60,8 @@ function StudentProfilePage({currentUser, handleSetUser}) {
 				)}
 			</div>
 
+			<div className="profile1">Use the above links to get started, and you'll be speaking a new language in no time!</div>
+				<img className="img2" src={langtravel} alt="logo" height={400} />
 			<div>
 				<h3>Update your User Image:</h3>
 				<form

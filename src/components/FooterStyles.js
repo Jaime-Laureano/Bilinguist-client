@@ -7,7 +7,7 @@ bottom: 0;
 width: 100%;
 height: 20%;
 position: relative;
-z-index: -100;
+z-index: -999;
 
 
 

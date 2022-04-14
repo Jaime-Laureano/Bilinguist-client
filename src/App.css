@@ -27,7 +27,7 @@ body {
 
 }
 
-.nav:visited {
+.nav > a{
   color: white;
 } 
 
@@ -39,7 +39,7 @@ body {
 .home {
   align-items: center;
   font-size: 40px;
-  padding-bottom: 60px;
+  padding-bottom: 30px;
 
 }
 
@@ -52,11 +52,42 @@ body {
 }
 
 .logOrSign {
-  padding: 40px;
+  padding: 25px;
 }
 
 .homeIntro {
   font-size: 25px;
   margin-right: 50px;
   margin-left: 50px;
+}
+
+.practice > img {
+  animation: rotation 8s infinite linear;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+.profile-pic {
+  padding-top: 50px;
+}
+
+.profile1 {
+  padding: 20px;
+  padding-bottom: 40px;
+}
+
+.img2 {
+  padding-bottom: 60px;
+}
+
+.find-teacher > h1 {
+  padding-top: 10px;
+  font-size: 30px;
 }
