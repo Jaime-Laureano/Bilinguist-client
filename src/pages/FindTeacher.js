@@ -1,36 +1,31 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-
 import { Button } from "@mui/material";
-
 import { API_URL } from "../config";
-
 
 function FindTeacher() {
 	const [allTeachersState, setAllTeachersState] = useState();
 	useEffect(() => {
-	const getTeachers = async () => {
-		try {
-			const { data } = await axios.get(
-				`${API_URL}/find-teacher`,
-				{
+		const getTeachers = async () => {
+			try {
+				const { data } = await axios.get(`${API_URL}/find-teacher`, {
 					withCredentials: true,
-				},
-			);
-			// console.log(data.allTeachers, "teachers*****");
-			setAllTeachersState({ ...data });
-			// console.log(allTeachersState, "@@@@@@@");
-		} catch (err) {
-			console.log(err, "errrrrr");
-		}
-	};
-
-	const handleSubmit = async () => {};
-	useEffect(() => {
+				});
+				// console.log(data.allTeachers, "teachers*****");
+				setAllTeachersState({ ...data });
+				// console.log(allTeachersState, "@@@@@@@");
+			} catch (err) {
+				console.log(err, "errrrrr");
+			}
+		};
 
 		getTeachers();
 	}, []);
+
+	const handleSubmit = () => {
+		console.log("hi");
+	};
 	return (
 		<div>
 			<h1>list of all teachers here</h1>
