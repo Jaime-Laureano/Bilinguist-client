@@ -31,23 +31,23 @@ function EditComment() {
 			[event.target.name]: event.target.value,
 		});
 	};
-	const getComment = async () => {
-		try {
-			const { data } = await axios.get(`${API_URL}/message-board/${id}`, {
-				withCredentials: true,
-			});
-			console.log(data, "<<<<<data");
-			setCommentState({ ...data.message });
-		} catch (err) {
-			console.error(err, "<<<<<");
-		}
-	};
 
 	useEffect(() => {
 		console.log("inuseeffect");
+		const getComment = async () => {
+			try {
+				const { data } = await axios.get(`${API_URL}/message-board/${id}`, {
+					withCredentials: true,
+				});
+				console.log(data, "<<<<<data");
+				setCommentState({ ...data.message });
+			} catch (err) {
+				console.error(err, "<<<<<");
+			}
+		};
 
 		getComment();
-	}, []);
+	});
 
 	return (
 		<div>
