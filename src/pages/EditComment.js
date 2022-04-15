@@ -13,18 +13,6 @@ function EditComment() {
 
 	console.log(id, "<<<< id");
 
-	const getComment = async () => {
-		try {
-			const { data } = await axios.get(`${API_URL}/message-board/${id}`, {
-				withCredentials: true,
-			});
-			console.log(data, "<<<<<data");
-			setCommentState({ ...data.message });
-		} catch (err) {
-			console.error(err, "<<<<<");
-		}
-	};
-
 	const editComment = async () => {
 		try {
 			await axios.put(`${API_URL}/message-board/${id}`, commentState, {
@@ -45,10 +33,20 @@ function EditComment() {
 	};
 
 	useEffect(() => {
-		console.log("inuseeffect");
+		const getComment = async () => {
+			try {
+				const { data } = await axios.get(`${API_URL}/message-board/${id}`, {
+					withCredentials: true,
+				});
+
+				setCommentState({ ...data.message });
+			} catch (err) {
+				console.error(err, "<<<<<");
+			}
+		};
 
 		getComment();
-	});
+	}, [id]);
 
 	return (
 		<div>

@@ -56,7 +56,7 @@ function MessageBoard({ currentUser }) {
 		const id = event.target.name;
 		try {
 			await axios.post(
-				`${API_URL}message-board/${id}`,
+				`${API_URL}/message-board/${id}`,
 				{},
 
 				{ withCredentials: true },
