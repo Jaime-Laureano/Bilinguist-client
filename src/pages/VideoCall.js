@@ -19,7 +19,9 @@ export default function VideoCall() {
           script.id = "videoChat";
           script.innerHTML = `window.DailyIframe.createFrame({
             iframeStyle: {
-              position: "relative",
+              position: "absolute",
+              top: "0px",
+              left:"0px",
               width: "100vw",
               height: "100vh",
               border: "0",
