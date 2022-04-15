@@ -20,7 +20,7 @@ export default function VideoCall() {
           script.innerHTML = `window.DailyIframe.createFrame({
             iframeStyle: {
               position: "absolute",
-              top: "0px",
+              top: "75px",
               left:"0px",
               width: "100vw",
               height: "100vh",
@@ -46,5 +46,7 @@ export default function VideoCall() {
     };
   }, [id]);
 
-  return <div></div>;
+  return <div>
+    <p>Your video call will begin shortly...</p>
+  </div>;
 }
