@@ -39,7 +39,7 @@ function App() {
       <NavBar />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        {/* <Route path='/user' /> */}
+        <Route path="/user" />
         <Route path="/signup" element={<SignupForm />} />
         <Route path="/login" element={<LoginForm handleSetUser={setUser} />} />
         <Route
