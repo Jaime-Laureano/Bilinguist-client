@@ -23,58 +23,59 @@ import Footer from "./components/Footer";
 import Error404 from "./pages/Error404";
 
 function App() {
-	const [user, setUser] = useState();
-	useEffect(() => {
-		const data = async () => {
-			const currentUser = await axios.get(`${API_URL}/user`, {
-				withCredentials: true,
-			});
-			setUser(currentUser.data);
-		};
-		data();
-	}, []);
+  const [user, setUser] = useState();
+  useEffect(() => {
+    const data = async () => {
+      const currentUser = await axios.get(`${API_URL}/user`, {
+        withCredentials: true,
+      });
+      setUser(currentUser.data);
+    };
+    data();
+  }, []);
 
-	return (
-		<div className='App'>
-			<NavBar />
-			<Routes>
-				<Route path='/' element={<HomePage />} />
-				<Route path='/user' />
-				<Route path='/signup' element={<SignupForm />} />
-				<Route path='/login' element={<LoginForm handleSetUser={setUser} />} />
-				<Route
-					path='/student-profile'
-					element={
-						<StudentProfilePage handleSetUser={setUser} currentUser={user} />
-					}
-				/>
-				<Route path='/teacher-profile' element={<TeacherProfilePage />} />
-				<Route path='/practice' element={<Practice />} />
+  return (
+    <div className="App">
+      <NavBar />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        {/* <Route path='/user' /> */}
+        <Route path="/signup" element={<SignupForm />} />
+        <Route path="/login" element={<LoginForm handleSetUser={setUser} />} />
+        <Route
+          path="/student-profile"
+          element={
+            <StudentProfilePage handleSetUser={setUser} currentUser={user} />
+          }
+        />
+        <Route path="/teacher-profile" element={<TeacherProfilePage />} />
+        <Route path="/practice" element={<Practice />} />
 
-				<Route path='/video-chat' element={<JoinRoom />} />
+        <Route path="/video-chat" element={<JoinRoom />} />
 
-				<Route
-					path='/message-board'
-					element={<MessageBoard handleSetUser={setUser} currentUser={user} />}
-				/>
+        <Route
+          path="/message-board"
+          element={<MessageBoard handleSetUser={setUser} currentUser={user} />}
+        />
 
-				<Route path='/message-board/:id' element={<EditComment />} />
-				<Route
-					path='/find-teacher'
-					element={<FindTeacher handleSetUser={setUser} currentUser={user} />}
-				/>
-				<Route path='/find-teacher/add-teacher' element={<AddTeacherForm />} />
-				<Route path='/add-teacher/:id' element={<EditTeacherBio />} />
-				<Route path='/logout' element={<LogoutPage />} />
+        <Route path="/message-board/:id" element={<EditComment />} />
+        <Route
+          path="/find-teacher"
+          element={<FindTeacher handleSetUser={setUser} currentUser={user} />}
+        />
+        <Route path="/find-teacher/add-teacher" element={<AddTeacherForm />} />
+        <Route path="/add-teacher/:id" element={<EditTeacherBio />} />
+        <Route path="/logout" element={<LogoutPage />} />
 
-				<Route path='/video-call/:id' element={<VideoCall />} />
-				<Route path='*' element={<Error404 />} />
-			</Routes>
-			<div className="footer-space"></div>
-			<div><Footer /></div>
-		</div>
-		
-	);
+        <Route path="/video-call/:id" element={<VideoCall />} />
+        <Route path="*" element={<Error404 />} />
+      </Routes>
+      <div className="footer-space"></div>
+      <div>
+        <Footer />
+      </div>
+    </div>
+  );
 }
 
 export default App;
