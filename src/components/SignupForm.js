@@ -13,7 +13,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { API_URL } from "../config";
 
-function SignupForm() {
+const SignupForm = () => {
   const [formState, setFormState] = useState({
     fullName: "",
     email: "",
@@ -30,11 +30,9 @@ function SignupForm() {
     setFormState({ ...formState, [event.target.name]: event.target.value });
 
   const handleSubmit = (e) => {
-    console.log(formState);
     e.preventDefault();
-    axios.post(`${API_URL}/api/signup`, formState);
-    console
-      .log("COckney")
+    axios
+      .post(`${API_URL}/auth/signup`, formState)
       .then(() => navigate("/login"))
       .catch((err) => {
         console.error(err);
@@ -109,6 +107,6 @@ function SignupForm() {
       </FormGroup>
     </div>
   );
-}
+};
 
 export default SignupForm;
