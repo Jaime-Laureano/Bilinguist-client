@@ -29,18 +29,16 @@ function SignupForm() {
   const onFormChange = (event) =>
     setFormState({ ...formState, [event.target.name]: event.target.value });
 
-  const handleSubmit = async () => {
+  const handleSubmit = (e) => {
     console.log(formState);
-    try {
-      const data = await axios.post(`${API_URL}/api/signup`, formState, {
-        withCredentials: true,
+    e.preventDefault();
+    axios.post(`${API_URL}/api/signup`, formState);
+    console
+      .log("COckney")
+      .then(() => navigate("/login"))
+      .catch((err) => {
+        console.error(err);
       });
-      console.log(data.data, "COckney");
-      setFormState({});
-      navigate("/login");
-    } catch (err) {
-      console.error(err, "<<<<<");
-    }
   };
 
   return (
