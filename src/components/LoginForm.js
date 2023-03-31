@@ -38,31 +38,33 @@ function LoginForm({ handleSetUser }) {
   };
   return (
     <div>
-      <FormGroup>
-        <TextField
-          id="filled-basic"
-          label="email"
-          variant="filled"
-          name="email"
-          onChange={onFormChange}
-          value={loginFormState.email}
-          type="email"
-          required
-        />
-        <TextField
-          id="filled-basic"
-          label="password"
-          variant="filled"
-          name="password"
-          type="password"
-          onChange={onFormChange}
-          value={loginFormState.password}
-          required
-        />
-        <Button type="submit" variant="contained" onClick={handleSubmit}>
-          Submit
-        </Button>
-      </FormGroup>
+      <form>
+        <FormGroup>
+          <TextField
+            id="filled-basic"
+            label="email"
+            variant="filled"
+            name="email"
+            onChange={onFormChange}
+            value={loginFormState.email}
+            type="email"
+            required
+          />
+          <TextField
+            id="filled-basic"
+            label="password"
+            variant="filled"
+            name="password"
+            type="password"
+            onChange={onFormChange}
+            value={loginFormState.password}
+            required
+          />
+          <Button type="submit" variant="contained" onClick={handleSubmit}>
+            Submit
+          </Button>
+        </FormGroup>
+      </form>
     </div>
   );
 }
