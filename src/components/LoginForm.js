@@ -20,7 +20,7 @@ function LoginForm({ handleSetUser }) {
 
   const handleSubmit = async () => {
     try {
-      const data = await axios.post(`${API_URL}/api/login`, loginFormState, {
+      const data = await axios.post(`${API_URL}/login`, loginFormState, {
         withCredentials: true,
       });
       handleSetUser(data.data);
@@ -40,7 +40,7 @@ function LoginForm({ handleSetUser }) {
     <div>
       <FormGroup>
         <TextField
-          id="filled-basic1"
+          id="filled-basic"
           label="email"
           variant="filled"
           name="email"
@@ -50,7 +50,7 @@ function LoginForm({ handleSetUser }) {
           required
         />
         <TextField
-          id="filled-basic2"
+          id="filled-basic"
           label="password"
           variant="filled"
           name="password"
