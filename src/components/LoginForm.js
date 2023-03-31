@@ -20,7 +20,7 @@ function LoginForm({ handleSetUser }) {
 
   const handleSubmit = async () => {
     try {
-      const data = await axios.post(`${API_URL}/login`, loginFormState, {
+      const data = await axios.post(`${API_URL}/api/login`, loginFormState, {
         withCredentials: true,
       });
       handleSetUser(data.data);
