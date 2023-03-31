@@ -40,7 +40,7 @@ function LoginForm({ handleSetUser }) {
     <div>
       <FormGroup>
         <TextField
-          id="filled-basic"
+          id="filled-basic1"
           label="email"
           variant="filled"
           name="email"
@@ -50,7 +50,7 @@ function LoginForm({ handleSetUser }) {
           required
         />
         <TextField
-          id="filled-basic"
+          id="filled-basic2"
           label="password"
           variant="filled"
           name="password"
