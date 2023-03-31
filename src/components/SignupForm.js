@@ -32,7 +32,7 @@ const SignupForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post(`${API_URL}/api/signup`, formState)
+      .post(`${API_URL}/signup`, formState)
       .then(() => navigate("/login"))
       .catch((err) => {
         console.error(err);
