@@ -32,7 +32,7 @@ function SignupForm() {
   const handleSubmit = async () => {
     console.log(formState);
     try {
-      const data = await axios.post(`${API_URL}/signup`, formState, {
+      const data = await axios.post(`${API_URL}/api/signup`, formState, {
         withCredentials: true,
       });
       console.log(data.data, "COckney");
