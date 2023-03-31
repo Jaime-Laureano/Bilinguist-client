@@ -26,7 +26,7 @@ function App() {
   const [user, setUser] = useState();
   useEffect(() => {
     const data = async () => {
-      const currentUser = await axios.get(`${API_URL}/user`, {
+      const currentUser = await axios.get(`${API_URL}/api/user`, {
         withCredentials: true,
       });
       setUser(currentUser.data);
