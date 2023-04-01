@@ -4,7 +4,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { API_URL } from "../config";
 
-function LoginForm({ handleSetUser }) {
+const LoginForm = ()=>({ handleSetUser }) {
   const [loginFormState, setLoginFormState] = useState({
     email: "",
     password: "",
@@ -18,9 +18,11 @@ function LoginForm({ handleSetUser }) {
       [event.target.name]: event.target.value,
     });
 
-  const handleSubmit = async () => {
-    try {
-      const data = await axios.post(`${API_URL}/login`, loginFormState, {
+  const handleSubmit = (e) => {
+	e.preventDefault();
+    
+      const data =  axios
+	  .post(`${API_URL}/login`, loginFormState, {
         withCredentials: true,
       });
       handleSetUser(data.data);
@@ -32,9 +34,7 @@ function LoginForm({ handleSetUser }) {
       } else {
         navigate("/student-profile");
       }
-    } catch (err) {
-      console.error(err, "<<<<<");
-    }
+
   };
   return (
     <div>
