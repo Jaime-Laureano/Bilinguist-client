@@ -4,7 +4,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { API_URL } from "../config";
 
-const LoginForm = ()=>({ handleSetUser }) {
+function LoginForm({ handleSetUser }) {
   const [loginFormState, setLoginFormState] = useState({
     email: "",
     password: "",
@@ -18,11 +18,9 @@ const LoginForm = ()=>({ handleSetUser }) {
       [event.target.name]: event.target.value,
     });
 
-  const handleSubmit = (e) => {
-	e.preventDefault();
-    
-      const data =  axios
-	  .post(`${API_URL}/login`, loginFormState, {
+  const handleSubmit = async () => {
+    try {
+      const data = await axios.post(`${API_URL}/login`, loginFormState, {
         withCredentials: true,
       });
       handleSetUser(data.data);
@@ -34,7 +32,9 @@ const LoginForm = ()=>({ handleSetUser }) {
       } else {
         navigate("/student-profile");
       }
-
+    } catch (err) {
+      console.error(err, "<<<<<");
+    }
   };
   return (
     <div>
@@ -50,7 +50,7 @@ const LoginForm = ()=>({ handleSetUser }) {
           required
         />
         <TextField
-          id="filled-basic2"
+          id="filled-basic"
           label="password"
           variant="filled"
           name="password"
